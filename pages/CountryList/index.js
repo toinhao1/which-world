@@ -6,8 +6,8 @@ const CountryList = ({ countries }) => {
 		<Grid.Container gap={2} justify='center'>
 			{countries &&
 				countries.map((country) => (
-					<Grid xs={4}>
-						<CountryCard country={country} key={country.numericCode} />{' '}
+					<Grid xs={3}>
+						<CountryCard country={country} key={country.numericCode} />
 					</Grid>
 				))}
 		</Grid.Container>
