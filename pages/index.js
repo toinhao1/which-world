@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
 import CountryList from './CountryList';
 
-export default function Home() {
+export default function Home({ countries }) {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -22,8 +21,18 @@ export default function Home() {
 					Get started by editing <code className={styles.code}>pages/index.js</code>
 				</p>
 
-				<CountryList />
+				<CountryList countries={countries} />
 			</main>
 		</div>
 	);
+}
+
+export async function getStaticProps(context) {
+	const res = await fetch('https://restcountries.com/v2/all');
+	const countries = await res.json();
+	return {
+		props: {
+			countries,
+		},
+	};
 }
