@@ -1,12 +1,15 @@
-import { Grid, Card, Text } from '@nextui-org/react';
+import { Grid } from '@nextui-org/react';
 import CountryCard from '../CountryCard';
 
-const CountryList = () => {
+const CountryList = ({ countries }) => {
 	return (
 		<Grid.Container gap={2} justify='center'>
-			<Grid xs={4}>
-				<CountryCard />
-			</Grid>
+			{countries &&
+				countries.map((country) => (
+					<Grid xs={4}>
+						<CountryCard country={country} key={country.numericCode} />{' '}
+					</Grid>
+				))}
 		</Grid.Container>
 	);
 };
