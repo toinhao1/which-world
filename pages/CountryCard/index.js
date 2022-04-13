@@ -1,9 +1,13 @@
-import { Card } from '@nextui-org/react';
+import { Card, Image } from '@nextui-org/react';
 
-const CountryCard = () => {
+const CountryCard = ({ country: { flag, name, population, region, capital } }) => {
 	return (
 		<Card>
-			<p>A Country Card</p>
+			<Image src={flag} />
+			<h4>{name}</h4>
+			<div>Population: {population}</div>
+			<div>Region: {region}</div>
+			<div>Capital: {capital}</div>
 		</Card>
 	);
 };
