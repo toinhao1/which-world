@@ -48,8 +48,8 @@ const CountryDetails = () => {
 	const languagesToDisplay = languages.map((singleLanguage) => singleLanguage.name).join(', ');
 	return (
 		<Container>
-			<Row css={{ paddingTop: 50, paddingBottom: 50 }}>
-				<Grid.Container gap={2} justify='flex-start'>
+			<Row css={{ paddingLeft: 20, paddingTop: 50, paddingBottom: 50 }}>
+				<Grid.Container css={{ padding: 0 }} gap={2} justify='flex-start'>
 					<Grid xs={12} md={6}>
 						<Button
 							size='sm'
@@ -66,7 +66,7 @@ const CountryDetails = () => {
 				</Grid.Container>
 			</Row>
 			<Row>
-				<Grid.Container gap={2} justify='center'>
+				<Grid.Container gap={4} justify='space-between'>
 					<Grid xs={12} md={6}>
 						<Image src={flag} />
 					</Grid>
