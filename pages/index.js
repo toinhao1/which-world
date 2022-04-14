@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { Container, Row, Input } from '@nextui-org/react';
+import { Container, Grid } from '@nextui-org/react';
+
 import styles from '../styles/Home.module.css';
 
 import CountryList from '../components/CountryList';
@@ -33,17 +34,23 @@ export default function Home({ countries }) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<main>
-				<Container className={styles.main}>
-					<Row css={{ paddingBottom: 40 }} justify='space-between'>
-						<Input
+			<main className={styles.main}>
+				<Container>
+					<Grid.Container css={{ paddingBottom: 40 }} justify='space-between'>
+						<input
+							style={{
+								width: 400,
+								borderWidth: 0,
+								padding: 15,
+								boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
+								borderRadius: 4,
+							}}
 							aria-label='search input'
 							value={query}
 							onChange={handleSearchInput}
 							placeholder='Search for a country...'
 						/>
-						{'Drop down to filter by region'}
-					</Row>
+					</Grid.Container>
 
 					<CountryList countries={countries} searchCountries={searchCountries} />
 				</Container>
