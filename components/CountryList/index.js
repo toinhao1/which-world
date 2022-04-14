@@ -1,26 +1,14 @@
-import { useEffect, useState } from 'react';
 import { Grid } from '@nextui-org/react';
 import CountryCard from '../CountryCard';
 
-const CountryList = ({ searchCountries }) => {
-	const [countries, setCountries] = useState([]);
-
-	useEffect(() => {
-		const getCountries = async () => {
-			const data = await fetch('https://restcountries.com/v2/all');
-			const result = await data.json();
-			setCountries(result);
-		};
-		getCountries();
-	}, []);
-
+const CountryList = ({ countries, searchCountries }) => {
 	const countrySetToUse = searchCountries.length > 0 ? searchCountries : countries;
 
 	return (
-		<Grid.Container gap={2} justify='center'>
+		<Grid.Container css={{ padding: 0 }} gap={2} justify='center'>
 			{countries &&
 				countrySetToUse.map((country) => (
-					<Grid key={country.numericCode} xs={3}>
+					<Grid xs={10} md={3} sm={3} key={country.numericCode}>
 						<CountryCard country={country} />
 					</Grid>
 				))}
