@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { Container, Card, Row, Text, Input } from '@nextui-org/react';
+import { Container, Row, Input } from '@nextui-org/react';
 import styles from '../styles/Home.module.css';
 
-import CountryList from './CountryList';
+import CountryList from './countryList';
 
 export default function Home({ countries }) {
 	const [query, setQuery] = useState('');

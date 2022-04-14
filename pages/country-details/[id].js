@@ -80,7 +80,9 @@ const CountryDetails = () => {
 								<Row>
 									Border Countries:{'  '}
 									{borders ? (
-										borders.map((countryCode) => <CountryButton countryCode={countryCode} />)
+										borders.map((countryCode) => (
+											<CountryButton key={countryCode} countryCode={countryCode} />
+										))
 									) : (
 										<Text> No Borders Provided</Text>
 									)}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Grid } from '@nextui-org/react';
-import CountryCard from '../CountryCard';
+import CountryCard from '../countryCard';
 
 const CountryList = ({ searchCountries }) => {
 	const [countries, setCountries] = useState([]);
@@ -20,8 +20,8 @@ const CountryList = ({ searchCountries }) => {
 		<Grid.Container gap={2} justify='center'>
 			{countries &&
 				countrySetToUse.map((country) => (
-					<Grid xs={3}>
-						<CountryCard country={country} key={country.numericCode} />
+					<Grid key={country.numericCode} xs={3}>
+						<CountryCard country={country} />
 					</Grid>
 				))}
 		</Grid.Container>
