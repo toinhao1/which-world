@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Container, Row, Input } from '@nextui-org/react';
 import styles from '../styles/Home.module.css';
 
-import CountryList from './countryList';
+import CountryList from '../components/CountryList';
 
 export default function Home({ countries }) {
 	const [query, setQuery] = useState('');

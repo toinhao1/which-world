@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Grid } from '@nextui-org/react';
-import CountryCard from '../countryCard';
+import CountryCard from '../CountryCard';
 
 const CountryList = ({ searchCountries }) => {
 	const [countries, setCountries] = useState([]);
