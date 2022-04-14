@@ -6,7 +6,7 @@ const CountryCard = ({ country: { flag, name, population, region, capital } }) =
 			<Card>
 				<Image src={flag} />
 				<h4>{name}</h4>
-				<div>Population: {population}</div>
+				<div>Population: {Number(population).toLocaleString()}</div>
 				<div>Region: {region}</div>
 				<div>Capital: {capital}</div>
 			</Card>
