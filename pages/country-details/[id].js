@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card, Image, Container, Row, Col, Grid, Button, Loading, Text } from '@nextui-org/react';
+import { Card, Image, Container, Row, Col, Grid, Button, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import LoadingData from '../../components/loading';
@@ -48,8 +48,22 @@ const CountryDetails = () => {
 	const languagesToDisplay = languages.map((singleLanguage) => singleLanguage.name).join(', ');
 	return (
 		<Container>
-			<Row>
-				<Button onClick={handleGoBack}>Back</Button>
+			<Row css={{ paddingTop: 50, paddingBottom: 50 }}>
+				<Grid.Container gap={2} justify='flex-start'>
+					<Grid xs={12} md={6}>
+						<Button
+							size='sm'
+							css={{
+								backgroundColor: 'White',
+								color: 'Black',
+								boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
+								borderRadius: 4,
+							}}
+							onClick={handleGoBack}>
+							Back
+						</Button>
+					</Grid>
+				</Grid.Container>
 			</Row>
 			<Row>
 				<Grid.Container gap={2} justify='center'>
