@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Card, Image, Container, Row, Col, Grid, Button, Loading, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
+import CountryButton from '../../components/countryButton';
+
 const CountryDetails = () => {
 	const [countryDetails, setCountryDetails] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +40,7 @@ const CountryDetails = () => {
 		topLevelDomain,
 		currencies,
 		languages,
+		borders,
 	} = countryDetails[0];
 
 	const currenciesToDisplay = currencies.map((sinlgeCurrency) => sinlgeCurrency.name).join(', ');
@@ -74,7 +77,14 @@ const CountryDetails = () => {
 										<div>Languages: {languagesToDisplay}</div>
 									</Col>
 								</Grid>
-								<Row>Border Countries:</Row>
+								<Row>
+									Border Countries:{'  '}
+									{borders ? (
+										borders.map((countryCode) => <CountryButton countryCode={countryCode} />)
+									) : (
+										<Text> No Borders Provided</Text>
+									)}
+								</Row>
 							</Grid.Container>
 						</Card>
 					</Grid>
