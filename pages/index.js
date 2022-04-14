@@ -20,7 +20,9 @@ export default function Home({ countries }) {
 			console.log(result);
 			setSearchedCountries(result);
 		};
-		searchCountries();
+		if (query) {
+			searchCountries();
+		}
 	}, [query]);
 	return (
 		<div className={styles.container}>
