@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Card, Image, Container, Row, Col, Grid, Button, Loading, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
+import LoadingData from '../../components/loading';
 import CountryButton from '../../components/countryButton';
 
 const CountryDetails = () => {
@@ -27,7 +28,7 @@ const CountryDetails = () => {
 		}
 	}, [id]);
 
-	if (isLoading || !countryDetails[0]) return <Loading type='points' size='xl' />;
+	if (isLoading || !countryDetails[0]) return <LoadingData />;
 
 	const {
 		flag,
