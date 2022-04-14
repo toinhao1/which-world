@@ -27,8 +27,21 @@ const CountryDetails = () => {
 
 	if (isLoading || !countryDetails[0]) return <Loading type='points' size='xl' />;
 
-	const { flag, name, population, region, capital, nativeName, subregion, topLevelDomain } =
-		countryDetails[0];
+	const {
+		flag,
+		name,
+		population,
+		region,
+		capital,
+		nativeName,
+		subregion,
+		topLevelDomain,
+		currencies,
+		languages,
+	} = countryDetails[0];
+
+	const currenciesToDisplay = currencies.map((sinlgeCurrency) => sinlgeCurrency.name).join(', ');
+	const languagesToDisplay = languages.map((singleLanguage) => singleLanguage.name).join(', ');
 	return (
 		<Container>
 			<Row>
@@ -42,11 +55,13 @@ const CountryDetails = () => {
 					<Grid xs={12} md={6}>
 						<Card>
 							<Grid.Container gap={2} justify='center'>
+								<Row>
+									<Text h3>{name}</Text>
+								</Row>
 								<Grid xs={12} md={6}>
 									<Col>
-										<Text h4>{name}</Text>
 										<div>Native Name: {nativeName}</div>
-										<div>Population: {population}</div>
+										<div>Population: {Number(population).toLocaleString()}</div>
 										<div>Region: {region}</div>
 										<div>SubRegion: {subregion}</div>
 										<div>Capital: {capital}</div>
@@ -55,10 +70,11 @@ const CountryDetails = () => {
 								<Grid xs={12} md={6}>
 									<Col>
 										<div>Top Level Domian: {topLevelDomain}</div>
-										<div>Currencies: {region}</div>
-										<div>Languages: {subregion}</div>
+										<div>Currencies: {currenciesToDisplay}</div>
+										<div>Languages: {languagesToDisplay}</div>
 									</Col>
 								</Grid>
+								<Row>Border Countries:</Row>
 							</Grid.Container>
 						</Card>
 					</Grid>
