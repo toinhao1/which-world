@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card, Image } from '@nextui-org/react';
+import { Card, Image, Container, Row, Col, Grid, Button, Loading, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 const CountryDetails = () => {
@@ -7,6 +7,10 @@ const CountryDetails = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
 	const { id } = router.query;
+
+	const handleGoBack = () => {
+		router.back();
+	};
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -21,17 +25,46 @@ const CountryDetails = () => {
 		}
 	}, [id]);
 
-	if (isLoading) return <p>'Loading.....'</p>;
+	if (isLoading || !countryDetails[0]) return <Loading type='points' size='xl' />;
 
-	const { flag, name, population, region, capital } = countryDetails[0];
+	const { flag, name, population, region, capital, nativeName, subregion, topLevelDomain } =
+		countryDetails[0];
 	return (
-		<Card>
-			<Image src={flag} />
-			<h4>{name}</h4>
-			<div>Population: {population}</div>
-			<div>Region: {region}</div>
-			<div>Capital: {capital}</div>
-		</Card>
+		<Container>
+			<Row>
+				<Button onClick={handleGoBack}>Back</Button>
+			</Row>
+			<Row>
+				<Grid.Container gap={2} justify='center'>
+					<Grid xs={12} md={6}>
+						<Image src={flag} />
+					</Grid>
+					<Grid xs={12} md={6}>
+						<Card>
+							<Grid.Container gap={2} justify='center'>
+								<Grid xs={12} md={6}>
+									<Col>
+										<Text h4>{name}</Text>
+										<div>Native Name: {nativeName}</div>
+										<div>Population: {population}</div>
+										<div>Region: {region}</div>
+										<div>SubRegion: {subregion}</div>
+										<div>Capital: {capital}</div>
+									</Col>
+								</Grid>
+								<Grid xs={12} md={6}>
+									<Col>
+										<div>Top Level Domian: {topLevelDomain}</div>
+										<div>Currencies: {region}</div>
+										<div>Languages: {subregion}</div>
+									</Col>
+								</Grid>
+							</Grid.Container>
+						</Card>
+					</Grid>
+				</Grid.Container>
+			</Row>
+		</Container>
 	);
 };
 
