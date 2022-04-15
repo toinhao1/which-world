@@ -12,7 +12,9 @@ const CountryDetails = () => {
 	const { id } = router.query;
 
 	const handleGoBack = () => {
-		router.back();
+		// router.back();
+		// assuming here we want to navigate back to the home page;
+		router.push('/');
 	};
 
 	useEffect(() => {
