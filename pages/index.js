@@ -54,25 +54,32 @@ export default function Home({ countries }) {
 
 			<main className={styles.main}>
 				<Container>
-					<Grid.Container css={{ paddingBottom: 40 }} justify='space-between'>
-						<input
-							style={{
-								width: 400,
-								borderWidth: 0,
-								padding: 15,
-								boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
-								borderRadius: 4,
-							}}
-							aria-label='search input'
-							value={query}
-							onChange={handleSearchInput}
-							placeholder='Search for a country...'
-						/>
-						<Dropdown
-							onChange={handleRegionSelect}
-							options={countryRegions}
-							value={regionToFilter}
-						/>
+					<Grid.Container gap={2} css={{ paddingBottom: 40 }} justify='space-between'>
+						<Grid css={{ paddingLeft: 0, paddingRight: 0 }} xs={12} md={4}>
+							<input
+								style={{
+									width: 400,
+									borderWidth: 0,
+									padding: 15,
+									boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
+									borderRadius: 4,
+									color: 'black',
+								}}
+								aria-label='search input'
+								value={query}
+								onChange={handleSearchInput}
+								placeholder='Search for a country...'
+							/>
+						</Grid>
+						<Grid css={{ paddingLeft: 0, paddingRight: 0 }} xs={12} md={2}>
+							<Dropdown
+								className='dropDown'
+								onChange={handleRegionSelect}
+								options={countryRegions}
+								value={regionToFilter}
+								placeholder='Filter by region..'
+							/>
+						</Grid>
 					</Grid.Container>
 
 					<CountryList
