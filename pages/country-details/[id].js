@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Card, Image, Container, Row, Col, Grid, Button, Text } from '@nextui-org/react';
+import { Image, Container, Row, Grid, Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import LoadingData from '../../components/loading';
-import CountryButton from '../../components/countryButton';
+import CountryDetailsCard from '../../components/CountryDetails';
 
 const CountryDetails = () => {
 	const [countryDetails, setCountryDetails] = useState({});
@@ -71,39 +71,7 @@ const CountryDetails = () => {
 						<Image src={flag} />
 					</Grid>
 					<Grid xs={12} md={6}>
-						<Card>
-							<Grid.Container gap={2} justify='center'>
-								<Row>
-									<Text h3>{name}</Text>
-								</Row>
-								<Grid xs={12} md={6}>
-									<Col>
-										<div>Native Name: {nativeName}</div>
-										<div>Population: {Number(population).toLocaleString()}</div>
-										<div>Region: {region}</div>
-										<div>SubRegion: {subregion}</div>
-										<div>Capital: {capital}</div>
-									</Col>
-								</Grid>
-								<Grid xs={12} md={6}>
-									<Col>
-										<div>Top Level Domian: {topLevelDomain}</div>
-										<div>Currencies: {currenciesToDisplay}</div>
-										<div>Languages: {languagesToDisplay}</div>
-									</Col>
-								</Grid>
-								<Row>
-									Border Countries:{'  '}
-									{borders ? (
-										borders.map((countryCode) => (
-											<CountryButton key={countryCode} countryCode={countryCode} />
-										))
-									) : (
-										<Text> No Borders Provided</Text>
-									)}
-								</Row>
-							</Grid.Container>
-						</Card>
+						<CountryDetailsCard countryDetails={countryDetails[0]} />
 					</Grid>
 				</Grid.Container>
 			</Row>
