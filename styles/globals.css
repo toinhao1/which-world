@@ -23,7 +23,7 @@ a {
 #countryButton {
   cursor: pointer;
   margin: 5px;
-  min-width: 100px;
+  min-width: 90px;
   font-size: small;
 	color: black;
 	background-color: white;
