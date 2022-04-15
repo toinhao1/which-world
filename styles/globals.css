@@ -9,6 +9,7 @@ body {
 main {
 	background-color: hsl(0, 0%, 98%);
 	min-height: 100vh;
+	overflow: hidden;
 }
 
 a {
