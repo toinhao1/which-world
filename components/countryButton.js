@@ -6,10 +6,8 @@ const CountryButton = ({ countryCode }) => {
 
 	useEffect(() => {
 		const getCountryNameWithCode = async () => {
-			console.log(countryCode);
 			const data = await fetch(`https://restcountries.com/v2/alpha/${countryCode}`);
 			const result = await data.json();
-			console.log(result);
 			setCountryName(result.name);
 		};
 		if (countryCode) {

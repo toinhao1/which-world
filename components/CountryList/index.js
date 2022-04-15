@@ -3,7 +3,7 @@ import CountryCard from '../CountryCard';
 
 const CountryList = ({ selectedRegion, countries, searchCountries }) => {
 	const countrySetToUse = searchCountries.length > 0 ? searchCountries : countries;
-	console.log(selectedRegion);
+
 	const filteredCountrySetToUse = selectedRegion
 		? countrySetToUse.filter((singleCountry) => singleCountry.region === selectedRegion)
 		: countrySetToUse;
