@@ -1,4 +1,4 @@
-import { Card, Grid, Col, Text } from '@nextui-org/react';
+import { Card, Grid, Col, Text, Row } from '@nextui-org/react';
 
 import CountryButton from '../countryButton';
 
@@ -18,6 +18,7 @@ const CountryDetailsCard = ({ countryDetails }) => {
 
 	const currenciesToDisplay = currencies.map((sinlgeCurrency) => sinlgeCurrency.name).join(', ');
 	const languagesToDisplay = languages.map((singleLanguage) => singleLanguage.name).join(', ');
+
 	return (
 		<Card>
 			<Grid.Container gap={2} justify='space-between'>
@@ -26,18 +27,45 @@ const CountryDetailsCard = ({ countryDetails }) => {
 				</Grid>
 				<Grid xs={12} md={6}>
 					<Col>
-						<div>Native Name: {nativeName}</div>
-						<div>Population: {Number(population).toLocaleString()}</div>
-						<div>Region: {region}</div>
-						<div>SubRegion: {subregion}</div>
-						<div>Capital: {capital}</div>
+						<Row>
+							<div className='labelDeatilName'>Native Name:</div>
+							<div>{nativeName}</div>
+						</Row>
+						<Row>
+							<div className='labelDeatilName'>Population: </div>{' '}
+							<div>{Number(population).toLocaleString()}</div>
+						</Row>
+						<Row>
+							<div className='labelDeatilName'>Region:</div>
+							<div>{region}</div>
+						</Row>
+
+						<Row>
+							{' '}
+							<div className='labelDeatilName'>SubRegion:</div>
+							<div>{subregion}</div>
+						</Row>
+						<Row>
+							{' '}
+							<div className='labelDeatilName'>Capital:</div>
+							<div>{capital}</div>
+						</Row>
 					</Col>
 				</Grid>
 				<Grid xs={12} md={6}>
 					<Col>
-						<div>Top Level Domian: {topLevelDomain}</div>
-						<div>Currencies: {currenciesToDisplay}</div>
-						<div>Languages: {languagesToDisplay}</div>
+						<Row>
+							<div className='labelDeatilName'>Top Level Domian:</div>
+							<div>{topLevelDomain}</div>
+						</Row>
+						<Row>
+							<div className='labelDeatilName'>Currencies:</div>
+							<div>{currenciesToDisplay}</div>
+						</Row>
+						<Row>
+							<div className='labelDeatilName'>Languages:</div>
+							<div>{languagesToDisplay}</div>
+						</Row>
 					</Col>
 				</Grid>
 				<Grid md={12}>
