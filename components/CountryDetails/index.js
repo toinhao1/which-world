@@ -69,14 +69,18 @@ const CountryDetailsCard = ({ countryDetails }) => {
 					</Col>
 				</Grid>
 				<Grid md={12}>
-					Border Countries:{'  '}
-					{borders ? (
-						borders.map((countryCode) => (
-							<CountryButton key={countryCode} countryCode={countryCode} />
-						))
-					) : (
-						<Text> No Borders Provided</Text>
-					)}
+					<Col span={4} style={{ whiteSpace: 'nowrap' }} className='labelDeatilName'>
+						Border Countries:{'  '}
+					</Col>
+					<Col>
+						{borders ? (
+							borders.map((countryCode) => (
+								<CountryButton key={countryCode} countryCode={countryCode} />
+							))
+						) : (
+							<Text> No Borders Provided</Text>
+						)}
+					</Col>
 				</Grid>
 			</Grid.Container>
 		</Card>
