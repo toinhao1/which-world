@@ -18,8 +18,8 @@ const CountryButton = ({ countryCode }) => {
 	}, [countryCode]);
 
 	return (
-		<Link href={`/country-details/${encodeURIComponent(countryName)}`}>
-			<button>{countryName}</button>
+		<Link css={{ cursor: 'default' }} href={`/country-details/${encodeURIComponent(countryName)}`}>
+			<button id='countryButton'>{countryName}</button>
 		</Link>
 	);
 };
