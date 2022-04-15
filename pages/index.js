@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Container, Grid } from '@nextui-org/react';
+import Dropdown from 'react-dropdown';
 
+import 'react-dropdown/style.css';
 import styles from '../styles/Home.module.css';
 
 import CountryList from '../components/CountryList';
@@ -9,10 +11,26 @@ import CountryList from '../components/CountryList';
 export default function Home({ countries }) {
 	const [query, setQuery] = useState('');
 	const [searchCountries, setSearchedCountries] = useState([]);
+	const [regionToFilter, setRegionToFilter] = useState('');
 
 	const handleSearchInput = (event) => {
 		setQuery(event.target.value);
 	};
+
+	const handleRegionSelect = ({ value }) => {
+		if (value === regionToFilter) {
+			setRegionToFilter('');
+		} else {
+			setRegionToFilter(value);
+		}
+	};
+
+	let countryRegions = [];
+	countries.forEach(({ region }) => {
+		if (!countryRegions.includes(region)) {
+			countryRegions.push(region);
+		}
+	});
 
 	useEffect(() => {
 		const searchCountries = async () => {
@@ -50,9 +68,18 @@ export default function Home({ countries }) {
 							onChange={handleSearchInput}
 							placeholder='Search for a country...'
 						/>
+						<Dropdown
+							onChange={handleRegionSelect}
+							options={countryRegions}
+							value={regionToFilter}
+						/>
 					</Grid.Container>
 
-					<CountryList countries={countries} searchCountries={searchCountries} />
+					<CountryList
+						selectedRegion={regionToFilter}
+						countries={countries}
+						searchCountries={searchCountries}
+					/>
 				</Container>
 			</main>
 		</div>
