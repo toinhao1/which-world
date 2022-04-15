@@ -30,22 +30,8 @@ const CountryDetails = () => {
 
 	if (isLoading || !countryDetails[0]) return <LoadingData />;
 
-	const {
-		flag,
-		name,
-		population,
-		region,
-		capital,
-		nativeName,
-		subregion,
-		topLevelDomain,
-		currencies,
-		languages,
-		borders,
-	} = countryDetails[0];
+	const { flag } = countryDetails[0];
 
-	const currenciesToDisplay = currencies.map((sinlgeCurrency) => sinlgeCurrency.name).join(', ');
-	const languagesToDisplay = languages.map((singleLanguage) => singleLanguage.name).join(', ');
 	return (
 		<Container>
 			<Row css={{ paddingLeft: 20, paddingTop: 50, paddingBottom: 50 }}>
