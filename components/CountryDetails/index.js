@@ -1,6 +1,6 @@
 import { Card, Grid, Col, Text, Row } from '@nextui-org/react';
 
-import CountryButton from '../countryButton';
+import CountryButton from '../CountryButton/index';
 
 const CountryDetailsCard = ({ countryDetails }) => {
 	const {
