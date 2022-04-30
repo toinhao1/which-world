@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Container, Grid } from '@nextui-org/react';
 import Dropdown from 'react-dropdown';
+import SearchBar from '../components/SearchBar';
+import CountryList from '../components/CountryList';
 
 import 'react-dropdown/style.css';
 import styles from '../styles/Home.module.css';
-
-import CountryList from '../components/CountryList';
 
 export default function Home({ countries }) {
 	const [query, setQuery] = useState('');
@@ -15,6 +15,9 @@ export default function Home({ countries }) {
 
 	const handleSearchInput = (event) => {
 		setQuery(event.target.value);
+		if (!event.target.value) {
+			setSearchedCountries([]);
+		}
 	};
 
 	const handleRegionSelect = ({ value }) => {
@@ -56,20 +59,7 @@ export default function Home({ countries }) {
 				<Container>
 					<Grid.Container gap={2} css={{ paddingBottom: 40 }} justify='space-between'>
 						<Grid css={{ paddingLeft: 0, paddingRight: 0 }} xs={12} md={4}>
-							<input
-								style={{
-									width: 400,
-									borderWidth: 0,
-									padding: 15,
-									boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
-									borderRadius: 4,
-									color: 'black',
-								}}
-								aria-label='search input'
-								value={query}
-								onChange={handleSearchInput}
-								placeholder='Search for a country...'
-							/>
+							<SearchBar query={query} handleSearchInput={handleSearchInput} />
 						</Grid>
 						<Grid css={{ paddingLeft: 0, paddingRight: 0 }} xs={12} md={2}>
 							<Dropdown

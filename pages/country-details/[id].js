@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Image, Container, Row, Grid, Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
+import BackButton from '../../components/BackButton';
+
 import LoadingData from '../../components/loading';
 import CountryDetailsCard from '../../components/CountryDetails';
 
@@ -10,12 +12,6 @@ const CountryDetails = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
 	const { id } = router.query;
-
-	const handleGoBack = () => {
-		// router.back();
-		// assuming here we want to navigate back to the home page;
-		router.push('/');
-	};
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -39,17 +35,7 @@ const CountryDetails = () => {
 			<Row css={{ paddingLeft: 20, paddingTop: 50, paddingBottom: 50 }}>
 				<Grid.Container css={{ padding: 0 }} gap={2} justify='flex-start'>
 					<Grid xs={12} md={6}>
-						<Button
-							size='sm'
-							css={{
-								backgroundColor: 'White',
-								color: 'Black',
-								boxShadow: '0 2px 4px 0 rgba(0,0,0,.2)',
-								borderRadius: 4,
-							}}
-							onClick={handleGoBack}>
-							Back
-						</Button>
+						<BackButton text={'Back'} />
 					</Grid>
 				</Grid.Container>
 			</Row>

@@ -12,7 +12,7 @@ const CountryList = ({ selectedRegion, countries, searchCountries }) => {
 		<Grid.Container css={{ padding: 0 }} gap={6} justify='center'>
 			{countries &&
 				filteredCountrySetToUse.map((country) => (
-					<Grid xs={10} md={3} sm={3} key={country.numericCode}>
+					<Grid lg={3} key={country.numericCode}>
 						<CountryCard country={country} />
 					</Grid>
 				))}
